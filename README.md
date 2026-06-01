@@ -18,17 +18,20 @@ The following steps should be executed to see the extension in action:
 cd demo-extension
 mvn clean install
 ```
+
 2. Build and run the `demo-app` project
 ```shell
 cd ../demo-app
 mvn clean quarkus:dev
 ```
+
 3. Verify the extension was used in `demo-app`. Check logs 
 The logs should contain the following entry:
 ```text
 026-05-30 09:24:38,977 INFO  [io.quarkus] (Quarkus Main Thread) Installed features: [cdi, demo-extension, rest, smallrye-context-propagation, vertx]
 ```
 where `demo-extension` is listed.
+
 4. Open the `http://localhost:8080/demo` url. It should respond with the following content on the `GET` method:
 ```json
 {
@@ -41,9 +44,11 @@ where `demo-extension` is listed.
 }
 ```
 The content above was generated in the `demo-extension` extension during the build time.
+
 5. Add the following property to the `demo-app/src/main/resources/application.properties` file:
 ```properties
 quarkus.demo.path=/demo-info
 ```
+
 6. Open the `http://localhost:8080/demo-info` url, it should respond with the same content as in the step `4`.
 The endpoint path was changed as the result of the property creation.
